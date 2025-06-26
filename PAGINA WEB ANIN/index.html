@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Normatividad Informática - AE 2.2.1 ANIN</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap');
+
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #6e8efb, #7300ff);
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(90deg, #563d7c, #9f71d7);
+      padding: 20px 10px;
+      text-align: center;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    nav button {
+      background: #9f71d7;
+      border: none;
+      padding: 10px 15px;
+      color: white;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      user-select: none;
+    }
+
+    nav button:hover,
+    nav button:focus {
+      background: #7e52b8;
+      outline: none;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px 30px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      flex-grow: 1;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      color: #563d7c;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #9f71d7;
+      padding-bottom: 5px;
+      user-select: none;
+    }
+
+    section p, section ul {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: disc inside;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    /* Imagen estilo */
+    .img-section {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(159,113,215,0.4);
+      margin: 15px auto 25px;
+      user-select: none;
+    }
+
+    /* Carrusel */
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 50px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      user-select: none;
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+      width: 100%;
+    }
+
+    .carousel-images img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 15px;
+  background: #fff;
+  padding: 10px;
+}
+
+
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .carousel-buttons button {
+      pointer-events: all;
+      background: rgba(159,113,215,0.7);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 8px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+
+    .carousel-buttons button:hover {
+      background: rgba(159,113,215,0.9);
+    }
+
+    /* PDF iframe */
+    .pdf-container {
+      width: 100%;
+      height: 600px;
+      border: 3px solid #9fff6f;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 4px 20px rgba(159,113,215,0.5);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #563d7c, #9f71d7);
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      font-family: 'Montserrat', sans-serif;
+      user-select: none;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* Scroll smooth */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      nav .menu {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .carousel-images img {
+        height: 250px;
+      }
+
+      main {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Normatividad Informática</h1>
+  <nav>
+    <div class="menu" role="menubar" aria-label="Menú principal">
+      <button role="menuitem" data-target="intro">Introducción</button>
+      <button role="menuitem" data-target="informatica-juridica">Informática Jurídica</button>
+      <button role="menuitem" data-target="derecho-informatico">Derecho Informático</button>
+      <button role="menuitem" data-target="politica-informatica">Política Informática</button>
+      <button role="menuitem" data-target="datos-personales">Datos Personales</button>
+      <button role="menuitem" data-target="sujetos">Sujeto Activo y Pasivo</button>
+      <button role="menuitem" data-target="seguridad-informatica">Seguridad Informática</button>
+      <button role="menuitem" data-target="legislacion-informatica">Legislación Informática</button>
+      <button role="menuitem" data-target="delitos">Delitos Informáticos</button>
+      <button role="menuitem" data-target="prevencion">Prevención</button>
+      <button role="menuitem" data-target="concepto-red">Concepto de Red</button>
+      <button role="menuitem" data-target="videos">Videos</button>
+      <button role="menuitem" data-target="pdf">PDF</button>
+      <button role="menuitem" data-target="privacidad">Seguridad y Privacidad</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Carrusel -->
+  <div class="carousel" aria-label="Carrusel de imágenes de normatividad informática">
+    <div class="carousel-images" id="carousel-images">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4xvVvSrlBaHh4brNbPuUBmNTOjPMAKS4QOtjcOvww1acjm94Vm3OQ59WsZgKGqy6v_tTrW3o-cyBQpLb1WOy_fUkKCm0-AP76hTo0gHa3la_0gYxywfQ0ii7kIBGfR21oHbaoBlrF1LE2t2vHr5mJKXkcbyYJJRC1khvtcdmz29aSwsYgvYOxYcTO/s364/1517512577.gif" alt="Normatividad Informática" />
+      <img src="https://normatividadinfo6104.wordpress.com/wp-content/uploads/2015/03/imagenes-con-movimiento-de-informatica-1.gif" alt="Informática Jurídica" />
+      <img src="https://ipn.mx/assets/files/dev/img/evaluacion-rdd.gif" alt="Derecho Informático" />
+      <img src="https://merida.anahuac.mx/hs-fs/hubfs/apreu/Blog/2019%20Blog%20APREU/APREU%20Blog%20-%20Abril%2019/dribbble-shot_6.gif?width=800&name=dribbble-shot_6.gif" alt="Política Informática" />
+      <img src="https://cdn.dribbble.com/userupload/24379747/file/original-77d3f903e02246335983c74ccf79ba95.gif" alt="Datos Personales y Sensibles" />
+    </div>
+    <div class="carousel-buttons">
+      <button id="prev-btn" aria-label="Imagen anterior">&#10094;</button>
+      <button id="next-btn" aria-label="Imagen siguiente">&#10095;</button>
+    </div>
+  </div>
+
+  <section id="intro" tabindex="-1">
+    <h2>Introducción a la Normatividad Informática</h2>
+    <p>
+      La normatividad informática es el conjunto de leyes, normas y principios que regulan el uso de las tecnologías de la información. Su objetivo es garantizar un uso seguro, ético y legal de la información digital, estableciendo derechos y obligaciones para todos los usuarios.
+    </p>
+    <p><strong>Características:</strong></p>
+    <ul>
+      <li>Regula el uso de los sistemas informáticos.</li>
+      <li>Protege los derechos de los usuarios y organizaciones.</li>
+      <li>Se basa en leyes nacionales e internacionales.</li>
+    </ul>
+    <p><strong>Ventajas:</strong></p>
+    <ul>
+      <li>Protección de la privacidad de los datos.</li>
+      <li>Reducción de delitos informáticos.</li>
+      <li>Promueve la confianza en el entorno digital.</li>
+    </ul>
+    <p><strong>Desventajas:</strong></p>
+    <ul>
+      <li>Puede volverse obsoleta con rapidez.</li>
+      <li>Dificultad para su aplicación a nivel global.</li>
+      <li>Requiere actualización constante.</li>
+    </ul>
+    <img src="https://static.wixstatic.com/media/baa2ba_db1e635ee64c4dd7a614ceb2b2ac6698.gif" alt="Normatividad informática" class="img-section" />
+  </section>
+
+  <section id="informatica-juridica" tabindex="-1">
+    <h2>Informática Jurídica</h2>
+    <p>
+      La informática jurídica es la rama que estudia el uso de herramientas informáticas en el ámbito del derecho. Incluye el uso de bases de datos jurídicas, sistemas de gestión judicial, y programas que automatizan procesos legales. Ayuda a los abogados, jueces y fiscales a acceder rápidamente a información jurídica actualizada.
+    </p>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQAU-EFJZz6-2cUWfnjiYTPJlUQ5MszV79kMtMa4y5nJuxE59XZHEG200-1B9UgDLtJND5UPsRzqMHKu8Ck7LLgI-Y5kCVAeLeYyC2CSqFlrRSY4WbEJpu6qBhV9BzmIW8A-GzF594jg/s1600/gfi+info.gif" alt="Informática Jurídica" class="img-section" />
+  </section>
+
+  <section id="derecho-informatico" tabindex="-1">
+    <h2>Derecho Informático</h2>
+    <p>
+      Es una rama novedosa del derecho que regula los efectos jurídicos derivados del uso de las tecnologías de la información. Aborda temas como:
+    </p>
+    <ul>
+      <li>Propiedad intelectual en entornos digitales.</li>
+      <li>Contratos electrónicos.</li>
+      <li>Protección de datos personales.</li>
+      <li>Responsabilidad por delitos informáticos.</li>
+    </ul>
+    <img src="https://amatylopezabogados.com/wp-content/uploads/2018/09/150918.jpg" alt="Derecho Informático" class="img-section" />
+  </section>
+
+  <section id="politica-informatica" tabindex="-1">
+    <h2>Política Informática</h2>
+    <p>
+      La política informática se refiere a las estrategias y normas establecidas por gobiernos o instituciones para regular el uso de la tecnología. Incluye:
+    </p>
+    <ul>
+      <li>Normas de ciberseguridad.</li>
+      <li>Reglamentos de acceso a redes.</li>
+      <li>Políticas de privacidad y uso de la información.</li>
+    </ul>
+    <img src="https://disetec.com.co/wp-content/uploads/2020/09/seguridad-Informatica.jpg" alt="Política Informática" class="img-section" />
+  </section>
+
+  <section id="datos-personales" tabindex="-1">
+    <h2>Datos Personales y Datos Sensibles</h2>
+    <p>
+      <strong>Datos personales:</strong> Información que identifica o puede identificar a una persona. Ejemplo: nombre, dirección, teléfono.
+    </p>
+    <p>
+      <strong>Datos sensibles:</strong> Información que revela origen étnico, ideología, salud, orientación sexual. Su tratamiento requiere mayor protección legal.
+    </p>
+    <img src="https://infocdmx.org.mx/images/que_son_dp.png" alt="Datos Personales y Sensibles" class="img-section" />
+  </section>
+
+  <section id="sujetos" tabindex="-1">
+    <h2>Sujeto Activo y Sujeto Pasivo</h2>
+    <ul>
+      <li><strong>Sujeto activo:</strong> Persona que comete el delito o infracción digital.</li>
+      <li><strong>Sujeto pasivo:</strong> Persona u organización afectada por el delito informático.</li>
+    </ul>
+    <img src="https://cdn.goconqr.com/uploads/node/image/53845620/desktop_20cdb955-22d9-4003-bb6e-ae78fb1f4aa2.png" alt="Sujeto Activo y Pasivo" class="img-section" />
+  </section>
+
+  <section id="seguridad-informatica" tabindex="-1">
+    <h2>Seguridad Informática</h2>
+    <p>
+      Consiste en el conjunto de medidas tecnológicas, físicas y administrativas para proteger los sistemas y la información. Sus objetivos son:
+    </p>
+    <ul>
+      <li>Garantizar la confidencialidad, integridad y disponibilidad de los datos.</li>
+      <li>Prevenir accesos no autorizados.</li>
+      <li>Minimizar riesgos y vulnerabilidades.</li>
+    </ul>
+    <img src="https://www.unitec.mx/hs-fs/hubfs/Imported_Blog_Media/tips-super-basicos-de-seguridad-informatica-5-Dec-17-2022-06-01-39-3384-PM.png?width=847&height=480&name=tips-super-basicos-de-seguridad-informatica-5-Dec-17-2022-06-01-39-3384-PM.png" alt="Seguridad Informática" class="img-section" />
+  </section>
+
+  <section id="legislacion-informatica" tabindex="-1">
+    <h2>Legislación Informática</h2>
+    <p>Es el conjunto de normas legales que rigen el uso de las TIC. Incluye leyes sobre:</p>
+    <ul>
+      <li>Protección de datos personales (como la LFPDPPP en México).</li>
+      <li>Delitos informáticos.</li>
+      <li>Firma electrónica.</li>
+      <li>Comercio electrónico.</li>
+    </ul>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRoiBEM2pgrYQ2OT_E0u7K634KagdzjKJRPQ&s" alt="Legislación Informática" class="img-section" />
+  </section>
+
+  <section id="delitos" tabindex="-1">
+    <h2>¿Qué es un delito informático?</h2>
+    <p>
+      Un delito informático es cualquier acción ilegal que involucra sistemas, redes o datos informáticos. Ejemplos incluyen:
+    </p>
+    <ul>
+      <li>Hackeo.</li>
+      <li>Robo de identidad.</li>
+      <li>Sabotaje digital.</li>
+      <li>Distribución de malware.</li>
+    </ul>
+    <img src="https://smowl.net/wp-content/uploads/2023/12/delitos-digitales.jpg" alt="Delitos Informáticos" class="img-section" />
+
+    <h3>Pirámide del Delincuente Informático</h3>
+    <img src="https://media.licdn.com/dms/image/v2/D4D22AQHsQnVjKASEVw/feedshare-shrink_800/feedshare-shrink_800/0/1727718032581?e=2147483647&v=beta&t=BQVPtqUDr2dHVY5avL2S-EEYUhXN-0C5WaM0bW8vIik" alt="Pirámide del Delincuente Informático" class="img-section" />
+
+    <h3>Robo o Suplantación de Identidad</h3>
+    <p>
+      Es el uso no autorizado de información personal para hacerse pasar por otra persona con fines fraudulentos. Las consecuencias pueden ser pérdidas financieras, daño a la reputación y problemas legales para la víctima.
+    </p>
+    <img src="https://www.consolidatedcredit.org/es/wp-content/uploads/2018/09/Fotolia_143981592_Subscription_Monthly_M-robo-de-identidad-e1649338784254.jpg" alt="Robo o Suplantación de Identidad" class="img-section" />
+
+    <h3>Técnicas para Perpetrar el ID Theft</h3>
+    <ul>
+      <li>Phishing: Correos o páginas falsas.</li>
+      <li>Skimming: Clonación de tarjetas.</li>
+      <li>Sniffing: Captura de datos en red.</li>
+      <li>Ingeniería social: Manipulación de personas.</li>
+    </ul>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLRLQ8YCwm5kb32hSACjXq-FjJb1Iq-_v66A&s" alt="Técnicas ID Theft" class="img-section" />
+
+    <h3>Dumpster Diving</h3>
+    <p>
+      Técnica que consiste en buscar información sensible en la basura, como recibos, facturas o documentos mal desechados.
+    </p>
+    <img src="https://www.redseguridad.com/wp-content/uploads/sites/2/2021/06/dumpster-diving.png" alt="Dumpster Diving" class="img-section" />
+
+    <h3>¿Está contemplado el RI como delito?</h3>
+    <p>
+      Sí, la suplantación de identidad está tipificada como delito en el Código Penal Federal y puede sancionarse con cárcel y multas.
+    </p>
+    <img src="https://realestatemarket.com.mx/images/2021/08-agosto/1208/En_qu_consiste_el_delito_de_usurpacin_de_identidad___.jpeg" alt="Delito RI" class="img-section" />
+  </section>
+
+  <section id="prevencion" tabindex="-1">
+    <h2>Vulnerabilidad del Home Office y Prevención</h2>
+    <p>Al trabajar desde casa aumentan los riesgos, entre ellos:</p>
+    <ul>
+      <li>WiFi insegura.</li>
+      <li>Dispositivos personales sin protección.</li>
+      <li>Falta de políticas empresariales claras.</li>
+    </ul>
+    <p><strong>¿Por qué es una vulnerabilidad?</strong> Porque reduce los niveles de seguridad que existen en oficinas profesionales, volviendo a los trabajadores blancos fáciles para ciberataques.</p>
+
+    <h3>Propuestas Preventivas</h3>
+    <ul>
+      <li>Uso de VPN y antivirus.</li>
+      <li>Autenticación de dos factores.</li>
+      <li>Políticas claras de seguridad.</li>
+      <li>Educación en ciberseguridad.</li>
+    </ul>
+
+    <h3>¿Cómo proteger una computadora?</h3>
+    <ul>
+      <li>Actualizar el sistema operativo.</li>
+      <li>Instalar software de seguridad.</li>
+      <li>No compartir contraseñas.</li>
+      <li>Realizar respaldos frecuentes.</li>
+    </ul>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvyL0LHaKbpGJUa9p3dHdLVdUhXNlkOOwGYg&s" alt="Home Office Vulnerabilidad" class="img-section" />
+    <img src="https://s1.significados.com/foto/software-og.jpg" alt="Propuestas Preventivas" class="img-section" />
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL-C4hLMH0RRZqFgPE5SRdR4sFULp4RuqDQA&s" alt="Protección de Computadora" class="img-section" />
+  </section>
+
+  <section id="concepto-red" tabindex="-1">
+    <h2>Concepto de Red</h2>
+    <p>
+      Una red es un conjunto de equipos conectados entre sí para intercambiar datos. Puede ser física (cables) o inalámbrica (WiFi).
+    </p>
+    <p><strong>Ejemplos:</strong></p>
+    <ul>
+      <li>Red de área local (LAN).</li>
+      <li>Red de área amplia (WAN).</li>
+      <li>Internet.</li>
+    </ul>
+    <img src="https://cdn.pixabay.com/animation/2024/02/25/18/24/18-24-37-183_512.gif" alt="Redes Informáticas" class="img-section" />
+  </section>
+
+  <section id="videos" tabindex="-1">
+    <h2>Videos Relacionados</h2>
+    <h3>Seguridad Informática</h3>
+    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; margin-bottom:20px;">
+      <iframe src="https://www.youtube.com/embed/dhMpeex7xlk" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    </div>
+    <h3>Delitos Informáticos</h3>
+    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; margin-bottom:20px;">
+      <iframe src="https://www.youtube.com/embed/IoA6vsedOpc" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    </div>
+  </section>
+
+  <section id="pdf" tabindex="-1">
+    <h2>Análisis en PDF</h2>
+    <a href="Normatividad_Informatica_Analisis.pdf" download style="color:#b17dff; font-weight:700;">Descargar PDF</a>
+    <iframe src="Normatividad_Informatica_Analisis.pdf" class="pdf-container" title="Análisis PDF"></iframe>
+  </section>
+
+  <section id="privacidad" tabindex="-1">
+    <h2>Seguridad y Privacidad</h2>
+    <ul>
+      <li>✔️ Certificado SSL para conexión segura (HTTPS).</li>
+      <li>✔️ Políticas de privacidad para protección de los datos de los usuarios.</li>
+      <li>✔️ Buenas prácticas en el manejo de información digital.</li>
+    </ul>
+    <img src="https://storage.googleapis.com/twg-content/original_images/TwG-Privacy-and-Trust-W-Figure2_JLWwKoX.gif" alt="Certificado SSL y privacidad" class="img-section" />
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Alex Tziu Cupul | Página AE 2.2.1 ANIN</p>
+</footer>
+
+<script>
+  // Menú dinámico scroll smooth y foco accesible
+  document.querySelectorAll('nav button[data-target]').forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-target');
+      const target = document.getElementById(targetId);
+      if(target){
+        target.focus();
+        target.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+    });
+  });
+
+  // Carrusel auto + botones
+  const carouselImages = document.getElementById('carousel-images');
+  const imagesCount = carouselImages.children.length;
+  let index = 0;
+
+  function showSlide(i) {
+    if(i < 0) index = imagesCount - 1;
+    else if(i >= imagesCount) index = 0;
+    else index = i;
+    carouselImages.style.transform = `translateX(${-index * 100}%)`;
+  }
+
+  document.getElementById('prev-btn').addEventListener('click', () => {
+    showSlide(index - 1);
+    resetInterval();
+  });
+
+  document.getElementById('next-btn').addEventListener('click', () => {
+    showSlide(index + 1);
+    resetInterval();
+  });
+
+  let autoSlide = setInterval(() => {
+    showSlide(index + 1);
+  }, 5000);
+
+  function resetInterval(){
+    clearInterval(autoSlide);
+    autoSlide = setInterval(() => {
+      showSlide(index + 1);
+    }, 5000);
+  }
+</script>
+
+</body>
+</html>
